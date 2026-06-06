@@ -152,6 +152,7 @@ p { margin: 0; }
   letter-spacing: -0.02em;
   line-height: 1;
 }
+.nav__inner .logo { font-size: 38px; }
 .logo--dark { color: var(--tinta); }
 .nav__links {
   display: flex;
