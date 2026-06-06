@@ -8,6 +8,7 @@ const WHATSAPP_MESSAGES = {
   pro: "Hola Tom, quiero Tom Pro.",
   max: "Hola Tom, quiero Tom Max.",
   contador: "Soy contador, quiero saber más.",
+  liquidacion: "Hola Tom, quiero liquidar mis impuestos con un contador aliado.",
   demo: "Hola Tom, quiero una demo de 10 minutos.",
 };
 
