@@ -468,7 +468,7 @@ section { padding: 96px 0; }
 
 /* Cada logo entra en una caja de alto fijo; se uniforma a gris y se funde con
    el fondo crema (multiply). Al pasar el mouse recupera su color. */
-.marquee__logo {
+img.marquee__logo {
   flex: 0 0 auto;
   height: 48px;
   width: auto;
@@ -479,7 +479,26 @@ section { padding: 96px 0; }
   mix-blend-mode: multiply;
   transition: opacity .25s ease, filter .25s ease;
 }
-.marquee__logo:hover { opacity: 1; filter: grayscale(0); }
+img.marquee__logo:hover { opacity: 1; filter: grayscale(0); }
+
+/* Algunos logos (ej. Snicks, todo mayúsculas) son tipográficos y se ven más
+   grandes que el resto. Este modificador los baja un escalón para que no
+   dominen el carrusel. */
+img.marquee__logo--sm { height: 32px; max-width: 130px; }
+
+/* Logos que no quedaron bien como imagen y se muestran como texto. */
+.marquee__logo--text {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--humo);
+  opacity: 0.75;
+  transition: opacity .25s ease, color .25s ease;
+}
+.marquee__logo--text:hover { opacity: 1; color: var(--bosque); }
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -488,7 +507,9 @@ section { padding: 96px 0; }
 
 @media (max-width: 720px) {
   .marquee__group { gap: 44px; padding-right: 44px; }
-  .marquee__logo { height: 38px; max-width: 130px; }
+  img.marquee__logo { height: 38px; max-width: 130px; }
+  img.marquee__logo--sm { height: 26px; max-width: 110px; }
+  .marquee__logo--text { font-size: 21px; }
   .marquee::before, .marquee::after { width: 48px; }
 }
 
