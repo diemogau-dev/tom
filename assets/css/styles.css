@@ -415,62 +415,71 @@ section { padding: 96px 0; }
 
 /* ---------- Carrusel de clientes (logos) ---------- */
 .clientes {
-  background: var(--bosque-profundo);
-  color: var(--crema);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 60px 0 64px;
+  background: var(--crema-suave);
+  color: var(--tinta);
+  border-bottom: 1px solid var(--niebla);
+  padding: 56px 0 60px;
   overflow: hidden;
 }
-.clientes__head { text-align: center; max-width: 760px; margin: 0 auto 44px; }
-.clientes__head .eyebrow { color: var(--claro-tenue); }
+.clientes__head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
 .clientes__head h2 {
   font-size: clamp(22px, 2.8vw, 30px);
-  color: var(--crema);
+  color: var(--tinta);
   margin-top: 14px;
+}
+.clientes__head h2 .hl {
+  color: var(--bosque);
+  background: linear-gradient(transparent 58%, var(--lima) 58%);
+  padding: 0 .08em;
+  border-radius: 3px;
 }
 
 .marquee {
   position: relative;
   width: 100%;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
 }
+/* Difuminado de los bordes hacia el fondo crema (con overlays, no mask,
+   para no romper el blend de los logos). */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee::before { left: 0;  background: linear-gradient(90deg,  var(--crema-suave), transparent); }
+.marquee::after  { right: 0; background: linear-gradient(270deg, var(--crema-suave), transparent); }
+
 .marquee__track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 42s linear infinite;
+  animation: marquee-scroll 45s linear infinite;
 }
 .marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__group {
   display: flex;
   align-items: center;
-  gap: 72px;
-  padding-right: 72px;
+  gap: 60px;
+  padding-right: 60px;
 }
+
+/* Cada logo entra en una caja de alto fijo; se uniforma a gris y se funde con
+   el fondo crema (multiply). Al pasar el mouse recupera su color. */
 .marquee__logo {
   flex: 0 0 auto;
-  white-space: nowrap;
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(20px, 2.2vw, 26px);
-  line-height: 1;
-  letter-spacing: 0.005em;
-  color: var(--claro-tenue);
-  opacity: 0.62;
-  transition: opacity .25s ease, color .25s ease;
-}
-.marquee__logo:hover { opacity: 1; color: var(--crema); }
-
-/* Logos en imagen: cualquier archivo (a color, negro o blanco) se uniforma a
-   gris claro sobre el fondo oscuro, para respetar el estilo del diseño. */
-img.marquee__logo {
-  height: 38px;
+  height: 48px;
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.55;
+  max-width: 165px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.04);
+  opacity: 0.64;
+  mix-blend-mode: multiply;
+  transition: opacity .25s ease, filter .25s ease;
 }
-img.marquee__logo:hover { opacity: 1; }
+.marquee__logo:hover { opacity: 1; filter: grayscale(0); }
 
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -478,17 +487,17 @@ img.marquee__logo:hover { opacity: 1; }
 }
 
 @media (max-width: 720px) {
-  .marquee__group { gap: 48px; padding-right: 48px; }
-  .marquee__logo { font-size: 21px; }
-  img.marquee__logo { height: 30px; }
+  .marquee__group { gap: 44px; padding-right: 44px; }
+  .marquee__logo { height: 38px; max-width: 130px; }
+  .marquee::before, .marquee::after { width: 48px; }
 }
 
 /* Accesibilidad: si el usuario pide menos movimiento, no animamos.
    Mostramos los logos en una grilla centrada y ocultamos la copia. */
 @media (prefers-reduced-motion: reduce) {
-  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee::before, .marquee::after { display: none; }
   .marquee__track { animation: none; width: 100%; }
-  .marquee__group { flex-wrap: wrap; justify-content: center; row-gap: 26px; padding-right: 0; }
+  .marquee__group { flex-wrap: wrap; justify-content: center; gap: 40px; row-gap: 30px; padding-right: 0; }
   .marquee__group + .marquee__group { display: none; }
 }
 

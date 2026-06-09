@@ -31,10 +31,10 @@ Acá van los archivos de logo que se muestran en el **carrusel de la home**
 
 ## Sobre el color
 
-No hace falta que prepares los logos en gris. La web los pinta de **gris claro
-automáticamente** (funciona con logos a color, en negro o en blanco) para que
-todos se vean parejos sobre el fondo oscuro, como en el diseño. Al pasar el
-mouse, cada logo se ilumina un poco.
+No hace falta que prepares los logos en gris. La web los pasa a **gris
+automáticamente** (funciona con logos a color, en negro o en blanco) y funde el
+fondo blanco con el fondo crema de la sección, para que todos se vean parejos.
+Al pasar el mouse, cada logo recupera su color.
 
-Por eso, si el logo es un SVG, alcanza con que tenga la forma correcta: el color
-original no importa porque se reemplaza por el gris del diseño.
+Tip: los logos quedan más prolijos si vienen **sin mucho margen blanco
+alrededor**. Igual, al subirlos los recortamos para que se vean del mismo alto.
