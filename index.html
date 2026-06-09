@@ -69,6 +69,55 @@
   </div>
 </section>
 
+<!-- ============ CLIENTES (carrusel de logos) ============ -->
+<!-- Los logos están en /assets/logos/ (ver assets/logos/README.md).
+     Para sumar o cambiar un logo:
+       1) Poné el archivo en /assets/logos/  (SVG/PNG/JPG).
+       2) Agregá o editá un <img class="marquee__logo" src="/assets/logos/archivo" alt="Nombre">.
+       3) Hacé el MISMO cambio en los DOS bloques .marquee__group (el segundo es
+          la copia que hace que el carrusel gire sin cortes).
+     La web los muestra en gris automáticamente; al pasar el mouse recuperan color. -->
+<section class="clientes" aria-label="Clientes que confían en Tom">
+  <div class="wrap clientes__head">
+    <span class="eyebrow">Confianza</span>
+    <h2>Negocios paraguayos que facturan con Tom <span class="hl">desde 2023</span>.</h2>
+  </div>
+  <div class="marquee">
+    <div class="marquee__track">
+      <div class="marquee__group">
+        <img class="marquee__logo marquee__logo--sm" src="/assets/logos/snicks.jpg" alt="Snicks">
+        <img class="marquee__logo" src="/assets/logos/malak.png" alt="Malak">
+        <img class="marquee__logo" src="/assets/logos/madera.png" alt="Madera">
+        <img class="marquee__logo" src="/assets/logos/la-efe.png" alt="La Efe">
+        <img class="marquee__logo" src="/assets/logos/sulit.png" alt="Sulit">
+        <img class="marquee__logo" src="/assets/logos/morado.jpg" alt="Morado">
+        <img class="marquee__logo" src="/assets/logos/pyae-movil.png" alt="Pya'e Móvil">
+        <img class="marquee__logo" src="/assets/logos/perez-ramirez.png" alt="Pérez Ramírez">
+        <img class="marquee__logo" src="/assets/logos/rapsa.png" alt="Rapsa">
+        <img class="marquee__logo" src="/assets/logos/marite-dietrich.png" alt="Marite Dietrich">
+        <img class="marquee__logo" src="/assets/logos/altafani.png" alt="Altafani">
+        <span class="marquee__logo marquee__logo--text">Incentiva</span>
+        <span class="marquee__logo marquee__logo--text">Triciclo</span>
+      </div>
+      <div class="marquee__group" aria-hidden="true">
+        <img class="marquee__logo marquee__logo--sm" src="/assets/logos/snicks.jpg" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/malak.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/madera.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/la-efe.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/sulit.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/morado.jpg" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/pyae-movil.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/perez-ramirez.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/rapsa.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/marite-dietrich.png" alt="" aria-hidden="true">
+        <img class="marquee__logo" src="/assets/logos/altafani.png" alt="" aria-hidden="true">
+        <span class="marquee__logo marquee__logo--text" aria-hidden="true">Incentiva</span>
+        <span class="marquee__logo marquee__logo--text" aria-hidden="true">Triciclo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROBLEMA ============ -->
 <section class="on-cream">
   <div class="wrap">
@@ -229,30 +278,10 @@
   </div>
 </section>
 
-<!-- ============ PRUEBA SOCIAL ============ -->
-<section class="on-cream">
-  <div class="wrap">
-    <div class="shead">
-      <h2>Negocios paraguayos que facturan con Tom desde 2023.</h2>
-    </div>
-    <!-- LOGOS CLIENTES — reemplazar cada .logo-box por <img src="..."> cuando estén los archivos -->
-    <div class="logos">
-      <div class="logo-box">La Efe</div>
-      <div class="logo-box">Madera</div>
-      <div class="logo-box">Malak</div>
-      <div class="logo-box">Marite Dietrich</div>
-      <div class="logo-box">Perez Ramirez</div>
-      <div class="logo-box">RAP</div>
-      <div class="logo-box">Sulit</div>
-      <div class="logo-box">Benco</div>
-    </div>
-
-    <!-- PENDIENTE: testimonios reales -->
-    <div class="placeholder-block">PENDIENTE: carrusel de testimonios reales (cita + nombre + negocio).</div>
-    <!-- PENDIENTE: casos de éxito -->
-    <div class="placeholder-block">PENDIENTE: 2–3 casos de éxito (negocio, situación, resultado con Tom).</div>
-  </div>
-</section>
+<!-- ============ TESTIMONIOS / CASOS (pendiente) ============ -->
+<!-- La prueba social vive ahora en el carrusel de logos de arriba (sección "clientes").
+     Por ahora no hay reseñas. Cuando haya testimonios y casos de éxito reales,
+     se agrega acá una sección nueva (cita + nombre + negocio / caso). -->
 
 <!-- ============ PREGUNTAS FRECUENTES ============ -->
 <section class="on-deep faq-section" id="ayuda">

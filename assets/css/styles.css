@@ -413,25 +413,113 @@ section { padding: 96px 0; }
 .compare td.yes { color: var(--bosque); font-weight: 700; }
 .compare tr:last-child th, .compare tr:last-child td { border-bottom: 0; }
 
-/* ---------- Logos clientes ---------- */
-.logos {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+/* ---------- Carrusel de clientes (logos) ---------- */
+.clientes {
+  background: var(--crema-suave);
+  color: var(--tinta);
+  border-bottom: 1px solid var(--niebla);
+  padding: 56px 0 60px;
+  overflow: hidden;
 }
-@media (max-width: 720px) { .logos { grid-template-columns: repeat(2, 1fr); } }
-.logo-box {
-  background: var(--crema);
-  border: 1px solid var(--niebla);
-  border-radius: var(--r-base);
-  padding: 28px 18px;
-  text-align: center;
+.clientes__head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
+.clientes__head h2 {
+  font-size: clamp(22px, 2.8vw, 30px);
+  color: var(--tinta);
+  margin-top: 14px;
+}
+.clientes__head h2 .hl {
+  color: var(--bosque);
+  background: linear-gradient(transparent 58%, var(--lima) 58%);
+  padding: 0 .08em;
+  border-radius: 3px;
+}
+
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+/* Difuminado de los bordes hacia el fondo crema (con overlays, no mask,
+   para no romper el blend de los logos). */
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee::before { left: 0;  background: linear-gradient(90deg,  var(--crema-suave), transparent); }
+.marquee::after  { right: 0; background: linear-gradient(270deg, var(--crema-suave), transparent); }
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 45s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding-right: 60px;
+}
+
+/* Cada logo entra en una caja de alto fijo; se uniforma a gris y se funde con
+   el fondo crema (multiply). Al pasar el mouse recupera su color. */
+img.marquee__logo {
+  flex: 0 0 auto;
+  height: 48px;
+  width: auto;
+  max-width: 165px;
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.04);
+  opacity: 0.64;
+  mix-blend-mode: multiply;
+  transition: opacity .25s ease, filter .25s ease;
+}
+img.marquee__logo:hover { opacity: 1; filter: grayscale(0); }
+
+/* Algunos logos (ej. Snicks, todo mayúsculas) son tipográficos y se ven más
+   grandes que el resto. Este modificador los baja un escalón para que no
+   dominen el carrusel. */
+img.marquee__logo--sm { height: 32px; max-width: 130px; }
+
+/* Logos que no quedaron bien como imagen y se muestran como texto. */
+.marquee__logo--text {
+  flex: 0 0 auto;
+  white-space: nowrap;
   font-family: var(--f-display);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 26px;
+  line-height: 1;
   color: var(--humo);
-  letter-spacing: 0.01em;
+  opacity: 0.75;
+  transition: opacity .25s ease, color .25s ease;
+}
+.marquee__logo--text:hover { opacity: 1; color: var(--bosque); }
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 720px) {
+  .marquee__group { gap: 44px; padding-right: 44px; }
+  img.marquee__logo { height: 38px; max-width: 130px; }
+  img.marquee__logo--sm { height: 26px; max-width: 110px; }
+  .marquee__logo--text { font-size: 21px; }
+  .marquee::before, .marquee::after { width: 48px; }
+}
+
+/* Accesibilidad: si el usuario pide menos movimiento, no animamos.
+   Mostramos los logos en una grilla centrada y ocultamos la copia. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee::before, .marquee::after { display: none; }
+  .marquee__track { animation: none; width: 100%; }
+  .marquee__group { flex-wrap: wrap; justify-content: center; gap: 40px; row-gap: 30px; padding-right: 0; }
+  .marquee__group + .marquee__group { display: none; }
 }
 
 .placeholder-block {
