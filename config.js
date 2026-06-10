@@ -1,4 +1,6 @@
 // ⚠️ EDITAR ACÁ: número de WhatsApp de Tom (sin "+", sin espacios).
+// ATENCIÓN: al ser un sitio estático, este número queda visible en el navegador de todos los visitantes.
+// No lo commitees en GitHub; usá una variable de entorno de Vercel con un build step si querés ocultarlo del repo.
 const WHATSAPP_NUMBER = "595981000000"; // PLACEHOLDER — reemplazar por el real
 
 // Mensajes pre-cargados por contexto
